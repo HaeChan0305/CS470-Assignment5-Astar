@@ -15,7 +15,7 @@
 </div>
 
 
-## Assignment 5
+## Setup
 
 ### Installation Guide
 Before followings, you should have Ubuntu 20.04 and ROS Noetic.
@@ -100,6 +100,7 @@ roslaunch py_astar_planner turtlebot3_navigation.launch
 1. Why "NO PATH!" message after completion?
 This py_astar_planner package iterlatively run the ASTAR algorithm. So, after reaching the goal, it still tries to find a path though it does not require path.
 
+## Assignment 5
 
 ### Problem 1: A∗ algorithm [65 pts]
 You will implement a representative informed search algorithm, A∗, to find the shortest path leveraging heuristics. The performance varies depending on the heuristics. You will compare the performance to Dijkstra algorithm that uses a path cost only. Please, fill your code in the blank section following the <b>“PLACE YOUR CODE HERE”</b> comments in the <b>py_astar_planner/src/py_astar_planner/astar.py</b> file following the sub-problems below.
