@@ -45,7 +45,6 @@ In your report, you must
 • plot the explored nodes at the end of the search (same as Problem 1.1),
 • plot the obtained path from a start to a goal. You have to consider the same scenarios given in Problem 1.1 above, and
 • describe the difference between Dijkstra and A-star methods based on the results.
-
 ```
 
 ### Problem 2: Running A∗ on Turtlebot3 [35 pts]
