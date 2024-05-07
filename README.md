@@ -17,7 +17,7 @@
 
 ## Assignment 5
 ### Problem 1: A∗ algorithm [65 pts]
-You will implement a representative informed search algorithm, A∗, to find the shortest path leveraging heuristics. The performance varies depending on the heuristics. You will compare the performance to Dijkstra algorithm that uses a path cost only. Please, fill your code in the blank section following the <b>“PLACE YOUR CODE HERE”<\b> comments in the <b>py_astar_planner/src/py_astar_planner/astar.py</b> file following the sub-problems below.
+You will implement a representative informed search algorithm, A∗, to find the shortest path leveraging heuristics. The performance varies depending on the heuristics. You will compare the performance to Dijkstra algorithm that uses a path cost only. Please, fill your code in the blank section following the <b>“PLACE YOUR CODE HERE”</b> comments in the <b>py_astar_planner/src/py_astar_planner/astar.py</b> file following the sub-problems below.
 
 #### 1.1. A∗ algorithm implementation [50 pts]
 A∗ algorithm expands the search tree by selecting a node n with the lowest value of an evaluation function $f(n)$, which is the sum of a path cost $c(n)$ and heuristics $h(n)$ (i.e., $f(n) = c(n) + h(n)$) (See details on Algorithm 1). As a testbed of the implemented A∗ algorithm, you will use a simple path-finding problem in a 20 × 20 size <i>grid</i> map where the goal and initial states will be given. You need to fill in the <b>astar_planning()</b> function and run the <b>astar.py</b> file.
