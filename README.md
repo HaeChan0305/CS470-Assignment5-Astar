@@ -100,6 +100,9 @@ roslaunch py_astar_planner turtlebot3_navigation.launch
 1. Why "NO PATH!" message after completion?
 This py_astar_planner package iterlatively run the ASTAR algorithm. So, after reaching the goal, it still tries to find a path though it does not require path.
 
+
+
+
 ## Assignment 5
 
 ### Problem 1: A∗ algorithm [65 pts]
@@ -147,71 +150,70 @@ Note that you can select challenging start-goal configurations as you want for t
 
 
 
-### Results
-#### 1. Markov Decision Process [50 pts]
-1. [15 pts] print out the transition probabilities to all the next states given
-  - a current state [3, 1] and a selected action “Down”,
+## Results
+### 1. A∗ algorithm [65 pts]
+#### 1.1. A∗ algorithm implementation [50 pts]
+- describe (justify within 100 words) your selected heuristics function for this grid- based search problem,
+  - I have selected the Manhattan distance between the position and the goal as the heuristic function for this grid-based search problem. Although there are many metrics for measuring the distance between two points, such as Euclidean distance, Manhattan distance is the most suitable for grid-based situations because the movement of the robot is constrained to the grid.
 
-    <center><img src="/Figure/answer1.png" width="50%" height="50%"></center>
+- count the explored nodes at the end of the search (start=[3,3] and goal=[4,18]),
+  - 82
+ 
+- plot the explored nodes at the end of the search (same as above), and
+
+  <center><img src="/Figure/answer1.png" width="50%" height="50%"></center>
+
+- plot the obtained paths from a start to a goal. You have to show the results of two scenarios:
+  - (i) start=[2, 1], goal=[19, 19]
+
+  <center><img src="/Figure/answer2.png" width="50%" height="50%"></center>
+
+  - (ii) start=[2, 18], goal=[18, 7]
+
+  <center><img src="/Figure/answer3.png" width="50%" height="50%"></center>
   
-  - a current state [0, 6] and a selected action “Right”,
+#### 1.2. Comparison of A-star vs. Dijkstra algorithms [15 pts]
+- count the explored nodes at the end of the search (same as Problem 1.1),
+  - 189 (start=[3,3] and goal=[4,18])
 
-    <center><img src="/Figure/answer2.png" width="50%" height="50%"></center>
-  
-  - a current state [3, 5] and a selected action “Right”,
-
-    <center><img src="/Figure/answer3.png" width="50%" height="50%"></center>
-
-2. [5 pts] plot the resulting histogram of returns produced by a dummy policy in the IPython notebook for 100 episodes,
-
-   <center><img src="/Figure/histogram.png" width="50%" height="50%"></center>
-
-  
-#### 2.1. Value Iteration (VI) [30 pts]
-1. write down the state values of the first 8 states of the gridworld environment1,
+- plot the explored nodes at the end of the search (same as Problem 1.1), (start=[3,3] and goal=[4,18])
 
   <center><img src="/Figure/answer4.png" width="50%" height="50%"></center>
-   
-2. overlay the best action at each state based on the state-action values,
-  
-  <center><img src="/Figure/answer5.png" width="50%" height="50%"></center>
 
-3. plot the distribution of trajectories produced by the trained policy for 100 episodes, and
+- plot the obtained path from a start to a goal. You have to consider the same scenarios given in Problem 1.1 above, and
+  - (i) start=[2, 1], goal=[19, 19]
 
-<center><img src="/Figure/answer6.png" width="50%" height="50%"></center>
+   <center><img src="/Figure/answer5.png" width="50%" height="50%"></center>
+    
+  - (ii) start=[2, 18], goal=[18, 7]
+ 
+    <center><img src="/Figure/answer6.png" width="50%" height="50%"></center>
 
+- describe the difference between Dijkstra and A-star methods based on the results.
+  - When comparing the Dijkstra and A-star algorithms, there is no significant difference in the length of the resulting path and its cost. However, we can observe a disparity in the number of explored nodes, represented by black dots (i.e., nodes in the CLOSED_SET), between the two methods. This observation suggests that the A-star algorithm is more computationally efficient than the Dijkstra algorithm in finding the shortest path. Additionally, the A-star algorithm requires storing fewer nodes in both the OPEN_SET and CLOSED_SET compared to Dijkstra. Thus, the A-star algorithm outperforms Dijkstra in terms of spatial efficiency. This is why the A-star algorithm is utilized when dealing with a large number of states, such as in the case of a 15-puzzle problem (4 by 4) that has approximately 20 trillion states.
 
-#### 2.2. Comparison under different transition models [20 pts]
-1. plot the expected returns per ε value with respect to the number of iterations until convergence (two graphs or one unified graph),
-  - ε = 0.1
+### 2. Running A∗ on Turtlebot3 [35 pts]
+- attach three different obstacle-avoidance paths captured from RViZ, and
 
-    <center><img src="/Figure/answer7.png" width="50%" height="50%"></center>
+  <center><img src="/Figure/answer7.png" width="50%" height="50%"></center>
 
-  - ε = 0.4
+  <center><img src="/Figure/answer8.png" width="50%" height="50%"></center>
 
-    <center><img src="/Figure/answer8.png" width="50%" height="50%"></center>
+  <center><img src="/Figure/answer9.png" width="50%" height="50%"></center>
 
-2. overlaying the best actions at each state per ε value (two visualizations),
-  - ε = 0.1
+- attach a sequence of screen captures that show your robot is tracking a computed path
 
-    <center><img src="/Figure/answer9.png" width="50%" height="50%"></center>
+  <center><img src="/Figure/answer10.png" width="50%" height="50%"></center>
 
-  - ε = 0.4
+  <center><img src="/Figure/answer11.png" width="50%" height="50%"></center>
 
-    <center><img src="/Figure/answer10.png" width="50%" height="50%"></center>
+  <center><img src="/Figure/answer12.png" width="50%" height="50%"></center>
 
-3. plot the distribution of trajectories produced by the trained policy for 100 episodes per ε value (two visualizations), and
-  - ε = 0.1
+  <center><img src="/Figure/answer13.png" width="50%" height="50%"></center>
 
-    <center><img src="/Figure/answer11.png" width="50%" height="50%"></center>
+  <center><img src="/Figure/answer14.png" width="50%" height="50%"></center>
 
-  - ε = 0.4
-
-    <center><img src="/Figure/answer12.png" width="50%" height="50%"></center>
-
-4. compare/analyze the effect of different ε based on the above results.
-  - As shown in the two plots of trajectories for each epsilon value, there are some unnessesary paths where epslion is 0.4. This is because eplison represents the level of uncertainty that the agent do exactly chosen action, so a lager eplison may cause the agent to take unexpected actions with high probability. In addition, for high epsilon values, it is not guaranteed to reach the maximum reward consistently as the Value iteration progresses.
-
+  <center><img src="/Figure/answer15.png" width="50%" height="50%"></center>
 
 # ETC
 For educational purpose only. This software cannot be used for any re-distribution with or without modification. The lecture notebook files are copied or modified from the material of Siamak Ravanbakhsh. 
